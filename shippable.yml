@@ -1,23 +1,23 @@
 language: python
 #build_image: shippableimages/ubuntu1204_python
 
-env: 
-  - REE=foo TEST=bar
+#env: 
+ # - REE=foo TEST=bar
   
-matrix:
-  include:
-    - python: 3.3
-      env: FOO=ree BAR=test
+#matrix:
+ # include:
+  #  - python: 3.3
+  #    env: FOO=ree BAR=test
 
 python:
-  - 2.6
+ # - 2.6
 #  - 2.7
  # - 3.2
-  - 3.3
+ # - 3.3
 #  - 3.4
   - 3.5
 #  - pypy
-  - pypy3
+  #- pypy3
 
 install:
   - pip install -r requirements.txt
@@ -35,18 +35,83 @@ script:
   - echo "$BAR"
   - echo "$REE"
   - echo "$TEST"
-  - cs ps
+ # - cs ps
  # - sleep 8m
 
 integrations:    
   notifications:
+    - integrationName: notify-slack 
+      type: slack
+      recipients:
+        - "#random" 
+        - "#rc-public" 
+        - "#rc-private"
+      on_start: always
+      on_success: change
+      on_failure: change 
+      on_cancel: change
+       
     - integrationName: email         
       type: email        
-      recipients: 
+      recipients:  
         - shiptest.rc.ow@gmail.com
         - shiptest.rc.me@gmail.com
-      sendConsoleLogs : true
-      sendCoverageReports : true
+     # sendConsoleLogs : true
+     # sendCoverageReports : true
       on_start: always
-      on_success: always 
-      on_failure: always    
+      on_success: change
+      on_failure: change
+      on_cancel: change
+     
+    - integrationName: irc  
+      type: irc
+      recipients:
+        - "chat.freenode.net#test-rc"
+        - "webchat.irchighway.net#test-rc"
+      on_start: always
+      on_success: change  
+      on_failure: change
+      on_cancel: change
+    
+    - integrationName: notify-hipchat
+      type: hipchat
+      recipients: 
+        - '#rc-private'
+        - '#rc-public'
+        - '@shiptestrcow'
+      on_start: always
+      on_success: change
+      on_failure: change
+      on_cancel: change
+     
+    - integrationName: generic-webhook   #issue will get created in github samleNod project
+      type: webhook
+      payload:
+        - title=Failure - $REPO_FULL_NAME - $BUILD_NUMBER
+        - body=Shippable Run $BUILD_NUMBER ($BUILD_URL) failed for $COMPARE_URL 
+      on_start: always
+      on_success: change
+      on_failure: change 
+      on_cancel: change
+      
+    - integrationName: project-trigger #samplNod project in shiptest-rc-ow will trigger
+      type: webhook
+      payload:
+       # - BUILD_NUM=$SHIPPABLE_JOB_NUMBER 
+        - BUILD_NUM=$SHIPPABLE_BUILD_NUMBER
+        - FOO=FUBU
+        - GOO=GUBU
+      on_start: always
+      on_success: change
+      on_failure: change
+      on_cancel: change
+      
+    - integrationName: resource-trigger
+      type: webhook
+      payload:
+        - versionName=Shippable Run $BUILD_NUMBER 
+      on_start: always
+      on_success: change
+      on_failure: change
+      on_cancel: change 
+      
