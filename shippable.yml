@@ -36,7 +36,6 @@ script:
   - echo "$REE"
   - echo "$TEST"
  # - cs ps
-  - sleep 8m
 
 integrations:    
   notifications:
