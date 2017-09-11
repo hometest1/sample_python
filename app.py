@@ -10,20 +10,20 @@ class App():
 
 class App2():
     def __init__(self):
-        self.var2 = 16
+        self.var2 = 15
 
     def calculate(self):
-        self.result = self.var2 * 4 + 2
+        self.result = self.var2 * 4 + 3
     
     def retrieve(self):
         return self.result
 
 class App3():
     def __init__(self):
-        self.var3 = 17
+        self.var3 = 15
 
     def calculate(self):
-        self.result = self.var3 * 4 + 2
+        self.result = self.var3 * 4 + 4
     
     def retrieve(self):
         return self.result
