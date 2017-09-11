@@ -9,14 +9,14 @@ class App():
         return self.result
 
 class App2():
-    def __init__(self):
+    def __init__(self2):
         self.var2 = 16
 
     def calculate(self):
-        self.result = self.var2 * 4 + 2
+        self2.result = self2.var2 * 4 + 2
     
-    def retrieve(self):
-        return self.result
+    def retrieve(self2):
+        return self2.result
 
 class App3():
     def __init__(self):
