@@ -16,13 +16,13 @@ class TestSuite2(unittest.TestCase):
         app2.calculate()
         self.failIf(app2.retrieve() != 66)
         
-from app3 import App3
+#from app3 import App3
 
-class TestSuite3(unittest.TestCase):
-    def test(self):
-        app3 = App3()
-        app3.calculate()
-        self.failIf(app3.retrieve() != 70)
+#class TestSuite3(unittest.TestCase):
+  #  def test(self):
+  #      app3 = App3()
+  #      app3.calculate()
+  #      self.failIf(app3.retrieve() != 70)
 
 def main():
     unittest.main()
