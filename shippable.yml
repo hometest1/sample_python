@@ -21,10 +21,7 @@ before_script:
 
 script:
   - which python
-  - print(app2.retrieve)
   - coverage run `which nosetests` test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
- # - coverage run `which nosetests` test2.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
-  
   - coverage xml -o shippable/codecoverage/coverage.xml
 
 integrations:    
