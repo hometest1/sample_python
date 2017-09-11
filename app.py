@@ -23,7 +23,7 @@ class App3():
         self.var3 = 15
 
     def calculate(self):
-        self.result = self.var3 * 4 + 4
+        self.result = self.var3 * 5
     
     def retrieve(self):
         return self.result
