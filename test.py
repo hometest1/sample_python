@@ -7,7 +7,9 @@ class TestSuite(unittest.TestCase):
         app = App()
         app.calculate()
         self.failIf(app.retrieve() != 62)
-    
+        
+from app import App2
+
     def test(self):
         app = App2()
         app.calculate()
