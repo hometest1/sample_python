@@ -13,7 +13,7 @@ from app2 import App2
 class TestSuite2(unittest.TestCase):
         app2 = App2()
         app2.calculate()
-        self.failIf(app2.retrieve() != 66)
+        self2.failIf(app2.retrieve() != 66)
         
 from app3 import App3
 
