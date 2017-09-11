@@ -7,8 +7,8 @@ class TestSuite(unittest.TestCase):
         app = App()
         app.calculate()
         self.failIf(app.retrieve1() != 62)
-        self.failIf(app.retrieve1() != 66)
-        self.failIf(app.retrieve1() != 70)
+        self.failIf(app.retrieve2() != 66)
+        self.failIf(app.retrieve3() != 70)
 
 def main():
     unittest.main()
