@@ -8,10 +8,10 @@ class TestSuite1(unittest.TestCase):
         app.calculate()
         self.failIf(app.retrieve() != 62)
 
-import unittest2
 from app2 import App2
 
 class TestSuite2(unittest.TestCase):
+    
     def test(self):
         app2 = App2()
         app2.calculate()
@@ -28,7 +28,6 @@ class TestSuite2(unittest.TestCase):
 
 def main():
     unittest.main()
-    unittest2.main()
 
 if __name__ == "__main__":
     main()
