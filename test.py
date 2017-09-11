@@ -15,7 +15,7 @@ class TestSuite2(unittest.TestCase):
     def test(self):
         app2 = App2()
         app2.calculate()
-        self.failIf(app2.retrieve() != 64)
+        self.failIf(app2.retrieve() != 60)
         
         
 #from app3 import App3
