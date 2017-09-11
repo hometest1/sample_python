@@ -1,7 +1,7 @@
 import unittest
 from app import App
 
-class TestSuite1(unittest.TestCase1):
+class TestSuite1(unittest.TestCase):
 
     def test(self):
         app = App()
@@ -10,14 +10,14 @@ class TestSuite1(unittest.TestCase1):
         
 from app2 import App2
 
-class TestSuite2(unittest.TestCase2):
+class TestSuite2(unittest.TestCase):
         app2 = App2()
         app2.calculate()
         self.failIf(app2.retrieve() != 66)
         
 from app3 import App3
 
-class TestSuite3(unittest.TestCase3):
+class TestSuite3(unittest.TestCase):
         app3 = App3()
         app3.calculate()
         self.failIf(app3.retrieve() != 70)
