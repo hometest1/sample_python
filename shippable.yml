@@ -1,14 +1,6 @@
 language: python
 #build_image: shippableimages/ubuntu1204_python
 
-#env: 
- # - REE=foo TEST=bar
-  
-#matrix:
- # include:
-  #  - python: 3.3
-  #    env: FOO=ree BAR=test
-
 python:
  # - 2.6
 #  - 2.7
@@ -16,7 +8,7 @@ python:
  # - 3.3
 #  - 3.4
   - 3.5
-#  - pypy
+ # - pypy
   #- pypy3
 
 install:
@@ -31,11 +23,6 @@ script:
   - which python
   - coverage run `which nosetests` test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
   - coverage xml -o shippable/codecoverage/coverage.xml
-  - echo "$FOO"
-  - echo "$BAR"
-  - echo "$REE"
-  - echo "$TEST"
- # - cs ps
 
 integrations:    
   notifications:
@@ -82,34 +69,3 @@ integrations:
       on_success: change
       on_failure: change
       on_cancel: change
-     
-    - integrationName: generic-webhook   #issue will get created in github samleNod project
-      type: webhook
-      payload:
-        - title=Failure - $REPO_FULL_NAME - $BUILD_NUMBER
-        - body=Shippable Run $BUILD_NUMBER ($BUILD_URL) failed for $COMPARE_URL 
-      on_start: always
-      on_success: change
-      on_failure: change 
-      on_cancel: change
-      
-    - integrationName: project-trigger #samplNod project in shiptest-rc-ow will trigger
-      type: webhook
-      payload:
-       # - BUILD_NUM=$SHIPPABLE_JOB_NUMBER 
-        - BUILD_NUM=$SHIPPABLE_BUILD_NUMBER
-        - FOO=FUBU
-        - GOO=GUBU
-      on_start: always
-      on_success: change
-      on_failure: change
-      on_cancel: change
-      
-    - integrationName: resource-trigger
-      type: webhook
-      payload:
-        - versionName=Shippable Run $BUILD_NUMBER 
-      on_start: always
-      on_success: change
-      on_failure: change
-      on_cancel: change 
